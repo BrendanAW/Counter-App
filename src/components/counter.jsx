@@ -12,14 +12,12 @@ class Counter extends Component {
   }
 
   handleIncrement = (x) => {
-    console.log(x);
     this.setState({ value: this.state.value + 1 });
   };
 
   render() {
     return (
       <>
-        {this.props.children}
         <span className={this.getClasses()}>{this.formatCount()}</span>
         <button
           onClick={() => this.handleIncrement(3)}
@@ -27,7 +25,12 @@ class Counter extends Component {
         >
           Increment
         </button>
-        {this.renderTags()}
+        <button
+          className="btn btn-danger btn-sm m2"
+          onClick={() => this.props.onDelete(this.props.id)}
+        >
+          Delete
+        </button>
       </>
     );
   }
